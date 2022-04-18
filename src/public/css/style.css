@@ -1,0 +1,40 @@
+html, body {
+    height: 100%;
+    width: 100%;
+}
+body {
+    position: relative;
+    background-color: antiquewhite;
+    display: flex;
+    justify-content: left;
+    align-items: center;
+}
+header {
+    position: absolute;
+    background-color: aliceblue;
+    height: 15%;
+    width: 100%;
+    top: 0;
+    box-shadow: 0 1px 1px black;
+}
+main {
+    position: absolute;
+    margin-left: 20px;
+    width: 1000px;
+    background-color: ghostwhite;
+    height: 440px;
+    border-radius: 20px;
+    box-shadow: 0 0 5px 3px black;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}
+footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    background-color: gray;
+    height: 15%;
+    bottom: 0;
+    box-shadow: 0 -1px 1px black;
+}
