@@ -36,10 +36,39 @@ const poolDB = mysql.createPool({
     queueLimit: 0
 });
 
+// SERVER VARIABLES
+class User {
+    constructor({player, session}){
+        this.player = player;
+        this.session = session;
+    }
+}
+const users = [];
+
 // WEB SOCKETS 
 const io = socketio(server);
 
 io.on('connection', (socket) => {
-    console.log('New user -> '+socket.id);
+    console.log('User connected -> '+socket.id);
+    let aux = { 
+        position: {
+        x: Math.trunc(Math.random()*(200-50)+50),
+        y: Math.trunc(Math.random()*(200-50)+50)
+        },
+        session: socket.id
+    }
+    socket.emit('playerInit', aux);
+    socket.emit('usersInit', users);
+    users.push(aux);
+    socket.broadcast.emit('userOn', aux);
 
+    socket.on('movePlayer', (data) => {
+        socket.broadcast.emit('drawOtherPlayers', data);
+    })
+
+    socket.on('disconnect', () => {
+        console.log("User disconnected -> "+socket.id);
+        users.splice(users.indexOf(socket.id), 1);
+        socket.broadcast.emit('userOff', socket.id);
+    })
 });

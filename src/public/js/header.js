@@ -3,19 +3,15 @@ const ctx = canvas.getContext("2d");
 canvas.width = 960;
 canvas.height = 400;
 
-ctx.strokeRect(0, 0, canvas.width, canvas.height);
-
-
-/*
 const colMap = [];
-for (let i = 0; i <collisions.length; i+=70){
-    colMap.push(collisions.slice(i, i+70));
+for (let i = 0; i <collisions.length; i+=60){
+    colMap.push(collisions.slice(i, i+60));
 }
 
 const boundaries = [];
 colMap.forEach((row, i) => {
     row.forEach((symbol, j) => {
-        if (symbol === 1025){
+        if (symbol === 673){
             boundaries.push(new Boundarie({
                 position: {
                     x: j * Boundarie.width,
@@ -26,10 +22,10 @@ colMap.forEach((row, i) => {
     });
 });
 
-const player = new Image();
-player.src = './img/down-ch.png';
+const playerImage = new Image();
+playerImage.src = '../img/character/character.png';
 const map = new Image();
-map.src = './img/map.png';
+map.src = '../img/map/farmoon-map.png';
 
 const background = new Sprite({
     position: {
@@ -38,13 +34,3 @@ const background = new Sprite({
     },
     image: map
 });
-
-const ch = new Player({
-    position: {
-        x: 200,
-        y: 100
-    },
-    velocity: 1,
-    image: map
-});
-*/
